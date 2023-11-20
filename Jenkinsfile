@@ -17,16 +17,16 @@ pipeline{
             steps{
                 echo "Building the Image"
                 sh "cd ${WORKSPACE} && docker build -t my-node-app ."
-                sh "docker tag my-node-app ghcr.io/ashish8800/node:latest"
+                sh "docker tag my-node-app ghcr.io/pratyush-82/node:latest"
             }
             
         }
         stage("Push to Docker Hub"){
             steps{
                 echo "Pushing the Image"
-                sh "export CR_PAT=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"
+                sh "export CR_PAT=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"
                 sh "echo $GITHUB_TOKEN_PSW | docker login ghcr.io -u $GITHUB_TOKEN_USR --password-stdin"
-                sh "docker push ghcr.io/ashish8800/node"
+                sh "docker push ghcr.io/pratyush-82/node"
                 
             }
             
